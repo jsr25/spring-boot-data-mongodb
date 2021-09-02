@@ -54,10 +54,9 @@ public class UserServiceMongoDB implements UserService {
     @Override
     public User update(UserDto userDto, String id) {
         Optional<UserDocument> optional = userRepository.findById(id);
-        if(optional.isPresent()){
+        if (optional.isPresent()) {
             UserDocument userDocument = optional.get();
             userDocument.update(userDto);
-//            userRepository.deleteById(id);
             userRepository.save(userDocument);
             return new User(userDocument);
         }
