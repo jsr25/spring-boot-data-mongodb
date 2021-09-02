@@ -2,11 +2,12 @@ package org.ada.school.dto;
 
 public class UserDto
 {
-    String name;
 
-    String email;
+    private String name;
 
-    String lastName;
+    private String email;
+
+    private String lastName;
 
     public UserDto()
     {
@@ -25,5 +26,17 @@ public class UserDto
     public String getLastName()
     {
         return lastName;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
     }
 }
