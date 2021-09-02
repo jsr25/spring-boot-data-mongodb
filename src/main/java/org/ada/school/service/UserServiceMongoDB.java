@@ -5,11 +5,13 @@ import org.ada.school.model.User;
 import org.ada.school.model.UserDocument;
 import org.ada.school.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
+@Service
 public class UserServiceMongoDB implements UserService {
 
     private final UserRepository userRepository;
@@ -55,6 +57,8 @@ public class UserServiceMongoDB implements UserService {
         if(optional.isPresent()){
             UserDocument userDocument = optional.get();
             userDocument.update(userDto);
+//            userRepository.deleteById(id);
+            userRepository.save(userDocument);
             return new User(userDocument);
         }
         return null;
