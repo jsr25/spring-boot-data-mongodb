@@ -9,15 +9,15 @@ public class User
 
 {
 
-    String id;
+   private String id;
 
-    String name;
+   private String name;
 
-    String email;
+   private String email;
 
-    String lastName;
+   private String lastName;
 
-    Date createdAt;
+   private Date createdAt;
 
 
     public User( UserDto userDto )
@@ -30,11 +30,11 @@ public class User
     }
 
     public User(UserDocument userDocument) {
-        this.id= userDocument.id;
-        this.name= userDocument.name;
-        this.lastName= userDocument.lastName;
-        this.email=userDocument.email;
-        this.createdAt=userDocument.createdAt;
+        this.id= userDocument.getId();
+        this.name= userDocument.getName();
+        this.lastName= userDocument.getLastName();
+        this.email=userDocument.getEmail();
+        this.createdAt=userDocument.getCreatedAt();
 
     }
 
@@ -58,6 +58,26 @@ public class User
 
     public Date getCreatedAt() {
         return createdAt;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
+    }
+
+    public void setCreatedAt(Date createdAt) {
+        this.createdAt = createdAt;
     }
 
     public void update(UserDto userDto )

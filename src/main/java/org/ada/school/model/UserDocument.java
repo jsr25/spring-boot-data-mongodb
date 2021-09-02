@@ -1,5 +1,6 @@
 package org.ada.school.model;
 
+import org.ada.school.dto.UserDto;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.index.Indexed;
 import org.springframework.data.mongodb.core.mapping.Document;
@@ -9,16 +10,16 @@ import java.util.Date;
 @Document
 public class UserDocument {
     @Id
-    String id;
+    private String id;
 
-    String name;
+    private String name;
 
     @Indexed(unique = true)
-    String email;
+    private String email;
 
-    String lastName;
+    private String lastName;
 
-    Date createdAt;
+    private Date createdAt;
 
     public UserDocument() {
     }
@@ -29,6 +30,13 @@ public class UserDocument {
         this.createdAt = user.getCreatedAt();
         this.lastName = user.getLastName();
         this.id=user.getId();
+    }
+
+    public void update(UserDto userDto )
+    {
+        name = userDto.getName();
+        lastName = userDto.getLastName();
+        email = userDto.getEmail();
     }
 
     public String getId() {

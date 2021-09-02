@@ -45,11 +45,18 @@ public class UserServiceMongoDB implements UserService {
 
     @Override
     public boolean deleteById(String id) {
-        return false;
+        userRepository.deleteById(id);
+        return !userRepository.existsById(id);
     }
 
     @Override
     public User update(UserDto userDto, String id) {
+        Optional<UserDocument> optional = userRepository.findById(id);
+        if(optional.isPresent()){
+            UserDocument userDocument = optional.get();
+            userDocument.update(userDto);
+            return new User(userDocument);
+        }
         return null;
     }
 }
